@@ -15,6 +15,7 @@ import android.widget.EditText;
 import java.io.IOException;
 import java.net.URL;
 
+import android.app.PendingIntent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private PendingIntent getGeofencePendingIntent() {
+        // Reuse the PendingIntent if we already have it.
+        //if (mGeofencePendingIntent != null) {
+        //    return mGeofencePendingIntent;
+        //}
+        Intent intent = new Intent(this, GeofenceTransitionsIntentService.class);
+        // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when
+        // calling addGeofences() and removeGeofences().
+        return PendingIntent.getService(this, 0, intent, PendingIntent.
+                FLAG_UPDATE_CURRENT);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
