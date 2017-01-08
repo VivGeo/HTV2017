@@ -62,13 +62,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-        
 
 
-            }
-        }
 
     }
+
+
+
 
 
     /**
